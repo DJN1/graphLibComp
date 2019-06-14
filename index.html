@@ -5,15 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Graph Comparisons</title>
-    <link
-      rel="stylesheet"
-      href="node_modules/bootstrap/dist/css/bootstrap.css"
-    />
     <link rel="stylesheet" href="node_modules/chartist/dist/chartist.min.css" />
+    <link rel="stylesheet" href="node_modules/taucharts/dist/taucharts.css">
+    <link rel="stylesheet" href="node_modules/tui-chart/dist/tui-chart.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
+        <!-- TITLES -->
+        <div class="row">
+            <div class="col-sm text-center"><strong><h3>Chartist</h3></strong></div>
+            <div class="col-sm text-center"><strong><h3>ChartJS</h3></strong></div>
+            <div class="col-sm text-center"><strong><h3>TauChart</h3></strong></div>
+            <div class="col-sm text-center"><strong><h3>TUI Chart</h3></strong></div>
+            <div class="col-sm text-center"><strong><h3>ZingChart</h3></strong></div>
+        </div>
+        <!-- LINE CHART -->
         <div class="row">
             <div class="col-sm">
                 <div id="chart1" class="ct-chart"></div>
@@ -21,7 +29,17 @@
             <div class="col-sm">
                 <canvas id="chart5" class="chartjs" width="300" height="200"></canvas>
             </div>
+            <div class="col-sm">
+                <div id="chart10" class="chartjs"></div>
+            </div>
+            <div class="col-sm">
+                <div id="chart15" class="chartjs"></div>
+            </div>
+            <div class="col-sm">
+                <div id="chart20" class="chartjs"></div>
+            </div>
         </div>
+        <!-- PIE CHART -->
         <div class="row">
             <div class="col-sm">
                 <div id="chart2" class="ct-chart"></div>
@@ -29,7 +47,17 @@
             <div class="col-sm">
                 <canvas id="chart6" class="chartjs" width="300" height="200"></canvas>
             </div>
+            <div class="col-sm">
+                <div id="chart11" class="chartjs">TAUCHARTS DOES NOT SUPPORT PIE CHARTS</div>
+            </div>
+            <div class="col-sm">
+                <div id="chart16" class="chartjs"></div>
+            </div>
+            <div class="col-sm">
+                <div id="chart21" class="chartjs"></div>
+            </div>
         </div>
+        <!-- BAR CHART -->
         <div class="row">
             <div class="col-sm">
                 <div id="chart3" class="ct-chart"></div>
@@ -37,7 +65,17 @@
             <div class="col-sm">
                 <canvas id="chart7" class="chartjs" width="300" height="200"></canvas>
             </div>
+            <div class="col-sm">
+                <div id="chart12" class="chartjs"></div>
+            </div>
+            <div class="col-sm">
+                <div id="chart17" class="chartjs"></div>
+            </div>
+            <div class="col-sm">
+                <div id="chart22" class="chartjs"></div>
+            </div>
         </div>
+        <!-- SCATTER PLOT -->
         <div class="row">
             <div class="col-sm">
                 <div id="chart4" class="ct-chart"></div>
@@ -45,10 +83,32 @@
             <div class="col-sm">
                 <canvas id="chart8" class="chartjs" width="300" height="200"></canvas>
             </div>
+            <div class="col-sm">
+                <div id="chart13" class="chartjs"></div>
+            </div>
+            <div class="col-sm">
+                <div id="chart18" class="chartjs"></div>
+            </div>
+            <div class="col-sm">
+                <div id="chart23" class="chartjs"></div>
+            </div>
         </div>
+        <!-- HISTOGRAM -->
         <div class="row">
             <div class="col-sm">
                 <div class="ct-chart">CHARTIST DOES NOT SUPPORT HISTOGRAMS</div>
+            </div>
+            <div class="col-sm">
+                <canvas id="chart9" class="chartjs" width="300" height="200"></canvas>
+            </div>
+            <div class="col-sm">
+                <div id="chart14" class="chartjs">TAUCHARTS DOES NOT SUPPORT HISTOGRAMS</div>
+            </div>
+            <div class="col-sm">
+                <div id="chart19" class="chartjs">TUI CHART DOES NOT SUPPORT HISTOGRAMS</div>
+            </div>
+            <div class="col-sm">
+                <div id="chart24" class="chartjs"></div>
             </div>
         </div>
 
@@ -57,6 +117,13 @@
     <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script> -->
     <script src="node_modules/chartist/dist/chartist.min.js"></script>
     <script src="node_modules/chart.js/dist/Chart.js"></script>
+    <script src="node_modules/d3/dist/d3.js"></script>
+    <script src="node_modules/taucharts/dist/taucharts.min.js"></script>
+    <script src="node_modules/tui-code-snippet/dist/tui-code-snippet.js"></script>
+    <script src="node_modules/raphael/raphael.js"></script>
+    <script src="node_modules/tui-chart/dist/tui-chart.js"></script>
+    <script src="node_modules/zingchart/client/zingchart.min.js"></script>
+    <!-- CHARTIST -->
     <script>
         let options = {
             width: 300,
@@ -321,6 +388,7 @@
             }
         );
     </script>
+    <!-- CHARTJS -->
     <script>
         new Chart(document.getElementById("chart5"), {
             type: "line",
@@ -580,7 +648,801 @@
                     backgroundColor: "rgba(60,186,159,1)"
                 }]
             }
-        })
+        });
+        new Chart(document.getElementById("chart9"), {
+            type: "bar",
+            data: {
+                labels: [1, 2, 3, 4],
+                datasets: [{
+                    label: "Histo 1",
+                    data: [10, 12, 18, 20],
+                    backgroundColor: "rgba(60,186,159,1)"
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        display: false,
+                        barPercentage: 1.3,
+                        ticks: {
+                            max: 3
+                        }
+                    }, {
+                        display: true,
+                        ticks: {
+                            autoSkip: false,
+                            max: 4
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+    <!-- TAUCHARTS -->
+    <script>
+        new Taucharts.Chart({
+            data: [{
+                type: "line 1",
+                x: 1,
+                y: 10
+            },{
+                type: "line 1",
+                x: 2,
+                y: 12
+            },{
+                type: "line 1",
+                x: 3,
+                y: 18
+            },{
+                type: "line 1",
+                x: 4,
+                y: 20
+            }],
+            plugins: [
+                Taucharts.api.plugins.get("tooltip")(),
+                Taucharts.api.plugins.get("legend")(),
+            ],
+            type: "line",
+            x: "x",
+            y: "y",
+            color: "line 1",
+            guide: {
+                color: {
+                    brewer: {
+                        x: "#ff0000"
+                    }
+                }
+            }
+        }).renderTo("#chart10");
+        new Taucharts.Chart({
+            data: [{
+                "num": "bar 1",
+                "data": 10
+            }, {
+                "num": "bar 2",
+                "data": 12
+            }, {
+                "num": "bar 3",
+                "data": 18
+            }, {
+                "num": "bar 4",
+                "data": 20
+            }],
+            type: "bar",
+            x: "num",
+            y: "data"
+        }).renderTo("#chart12");
+        new Taucharts.Chart({
+            data: [{
+                        "group": "one",
+                        x: 17.27610683006784,
+                        y: 44.87877613927183
+                    },
+                    {
+                        "group": "one",
+                        x: 15.98499690635613,
+                        y: 97.98680074434105
+                    },
+                    {
+                        "group": "one",
+                        x: 23.120728332919537,
+                        y: 26.435161289938414
+                    },
+                    {
+                        "group": "one",
+                        x: 12.521850747315955,
+                        y: 56.04085270973738
+                    },
+                    {
+                        "group": "one",
+                        x: 70.2649531402064,
+                        y: 4.325926039104644
+                    },
+                    {
+                        "group": "one",
+                        x: 64.87038421699913,
+                        y: 42.72637769570646
+                    },
+                    {
+                        "group": "one",
+                        x: 77.44635182390896,
+                        y: 91.13281463081432
+                    },
+                    {
+                        "group": "one",
+                        x: 59.10248257325075,
+                        y: 35.895742580175096
+                    },
+                    {
+                        "group": "one",
+                        x: 93.35564297006009,
+                        y: 62.42538168937579
+                    },
+                    {
+                        "group": "one",
+                        x: 24.414462433460393,
+                        y: 93.99248980950613
+                    },
+                    {
+                        "group": "one",
+                        x: 33.95144985409164,
+                        y: 67.5893503373826
+                    },
+                    {
+                        "group": "one",
+                        x: 11.977407439907939,
+                        y: 39.18755670776506
+                    },
+                    {
+                        "group": "one",
+                        x: 60.484401525834606,
+                        y: 26.503915927801348
+                    },
+                    {
+                        "group": "one",
+                        x: 44.30654941098935,
+                        y: 78.41637557993826
+                    },
+                    {
+                        "group": "one",
+                        x: 53.9825632044211,
+                        y: 4.1766673840242685
+                    },
+                    {
+                        "group": "one",
+                        x: 84.59118419977456,
+                        y: 68.51172335033773
+                    },
+                    {
+                        "group": "one",
+                        x: 45.19511553926772,
+                        y: 43.85495350282467
+                    },
+                    {
+                        "group": "one",
+                        x: 97.95288777502904,
+                        y: 92.25837528152022
+                    },
+                    {
+                        "group": "one",
+                        x: 78.38902233402798,
+                        y: 41.21856313538661
+                    },
+                    {
+                        "group": "one",
+                        x: 20.101798309113896,
+                        y: 43.134853287826935
+                    },
+                    {
+                        "group": "one",
+                        x: 14.60893777929131,
+                        y: 98.50700905347401
+                    },
+                    {
+                        "group": "one",
+                        x: 62.9356488813384,
+                        y: 20.137702054758066
+                    },
+                    {
+                        "group": "one",
+                        x: 54.108476230307566,
+                        y: 17.501745697715787
+                    },
+                    {
+                        "group": "one",
+                        x: 53.014246487778905,
+                        y: 12.804392371776663
+                    },
+                    {
+                        "group": "one",
+                        x: 3.621879712408993,
+                        y: 57.89254257819323
+                    },
+                    {
+                        "group": "one",
+                        x: 46.28389043719279,
+                        y: 79.33048953251254
+                    },
+                    {
+                        "group": "one",
+                        x: 11.360025469322244,
+                        y: 61.5598817185286
+                    },
+                    {
+                        "group": "one",
+                        x: 38.38392140740776,
+                        y: 77.60216020222602
+                    },
+                    {
+                        "group": "one",
+                        x: 58.61465901222091,
+                        y: 35.886102407466346
+                    },
+                    {
+                        "group": "one",
+                        x: 30.843909247899393,
+                        y: 97.26920108272073
+                    },
+                    {
+                        "group": "one",
+                        x: 96.07911807693486,
+                        y: 6.0887005038042785
+                    },
+                    {
+                        "group": "one",
+                        x: 23.253436124353865,
+                        y: 83.04070095508887
+                    },
+                    {
+                        "group": "one",
+                        x: 91.09334796438449,
+                        y: 7.553429975576176
+                    },
+                    {
+                        "group": "one",
+                        x: 45.92816031257709,
+                        y: 20.49514612758532
+                    },
+                    {
+                        "group": "one",
+                        x: 85.59010876101945,
+                        y: 6.900782191985777
+                    },
+                    {
+                        "group": "one",
+                        x: 93.93044667196413,
+                        y: 99.89078593088495
+                    },
+                    {
+                        "group": "one",
+                        x: 66.9948483026248,
+                        y: 32.70450746303655
+                    },
+                    {
+                        "group": "one",
+                        x: 32.78038180383955,
+                        y: 65.33566445296444
+                    },
+                    {
+                        "group": "one",
+                        x: 4.645106574880398,
+                        y: 96.06883399687267
+                    },
+                    {
+                        "group": "one",
+                        x: 54.584003506307496,
+                        y: 14.42056426935514
+                    },
+                    {
+                        "group": "one",
+                        x: 74.99941957302549,
+                        y: 11.64774255650547
+                    },
+                    {
+                        "group": "one",
+                        x: 56.37084365389917,
+                        y: 20.558657425814907
+                    },
+                    {
+                        "group": "one",
+                        x: 56.25565268991688,
+                        y: 83.82570157525903
+                    },
+                    {
+                        "group": "one",
+                        x: 10.699037156289437,
+                        y: 33.038050250321405
+                    },
+                    {
+                        "group": "one",
+                        x: 19.583554846113692,
+                        y: 28.304965294925523
+                    },
+                    {
+                        "group": "one",
+                        x: 17.23314348860656,
+                        y: 55.423969220712756
+                    },
+                    {
+                        "group": "one",
+                        x: 90.70706544341579,
+                        y: 12.329102625008993
+                    },
+                    {
+                        "group": "one",
+                        x: 29.46088777749265,
+                        y: 98.26370927689815
+                    },
+                    {
+                        "group": "one",
+                        x: 37.53118232344266,
+                        y: 86.67666824898292
+                    },
+                    {
+                        "group": "one",
+                        x: 10.76125734312614,
+                        y: 93.38427977502637
+                    },
+                    {
+                        "group": "one",
+                        x: 92.4094918406201,
+                        y: 95.26283628247822
+                    },
+                    {
+                        "group": "one",
+                        x: 93.02939289168732,
+                        y: 45.13473684638327
+                    }],
+            type: "scatterplot",
+            x: "x",
+            y: "y",
+            color: "group",
+            size: null
+        }).renderTo("#chart13");
+    </script>
+    <!-- TUI CHARTS -->
+    <script>
+        new tui.chart.lineChart(document.getElementById("chart15"), {
+            categories: [1, 2, 3, 4],
+            series: [{
+                name: "Line 1",
+                data: [10, 12, 18, 20]
+            }]
+        }, 
+        {
+            chart: {
+                width: 300,
+                height: 200,
+            },
+            yAxis: {
+                title: "y"
+            },
+            xAxis: {
+                title: "x",
+                pointOnColumn: true,
+            }
+        });
+        new tui.chart.pieChart(document.getElementById("chart16"), {
+            categories: [1],
+            series: [{
+                name: "1",
+                data: 10
+            }, {
+                name: "2",
+                data: 12
+            }, {
+                name: "3",
+                data: 18
+            }, {
+                name: "4",
+                data: 20
+            }]
+        }, {
+            chart: {
+                width: 300,
+                height: 200,
+            }
+        });
+        new tui.chart.columnChart(document.getElementById("chart17"), {
+            categories: [1, 2, 3, 4],
+            series: [{
+                name: "bars 1",
+                data: [10, 12, 18, 20]
+            }]
+        }, {
+            chart: {
+                width: 300,
+                height: 200,
+            },
+            xAxis: {
+                title: "x"
+            },
+            yAxis: {
+                title: "y"
+            }
+        });
+        new tui.chart.scatterChart(document.getElementById("chart18"), {
+            series: [{
+                name: "scatter 1",
+                data: [
+                {
+                        x: 17.27610683006784,
+                        y: 44.87877613927183
+                    },
+                    {
+                        x: 15.98499690635613,
+                        y: 97.98680074434105
+                    },
+                    {
+                        x: 23.120728332919537,
+                        y: 26.435161289938414
+                    },
+                    {
+                        x: 12.521850747315955,
+                        y: 56.04085270973738
+                    },
+                    {
+                        x: 70.2649531402064,
+                        y: 4.325926039104644
+                    },
+                    {
+                        x: 64.87038421699913,
+                        y: 42.72637769570646
+                    },
+                    {
+                        x: 77.44635182390896,
+                        y: 91.13281463081432
+                    },
+                    {
+                        x: 59.10248257325075,
+                        y: 35.895742580175096
+                    },
+                    {
+                        x: 93.35564297006009,
+                        y: 62.42538168937579
+                    },
+                    {
+                        x: 24.414462433460393,
+                        y: 93.99248980950613
+                    },
+                    {
+                        x: 33.95144985409164,
+                        y: 67.5893503373826
+                    },
+                    {
+                        x: 11.977407439907939,
+                        y: 39.18755670776506
+                    },
+                    {
+                        x: 60.484401525834606,
+                        y: 26.503915927801348
+                    },
+                    {
+                        x: 44.30654941098935,
+                        y: 78.41637557993826
+                    },
+                    {
+                        x: 53.9825632044211,
+                        y: 4.1766673840242685
+                    },
+                    {
+                        x: 84.59118419977456,
+                        y: 68.51172335033773
+                    },
+                    {
+                        x: 45.19511553926772,
+                        y: 43.85495350282467
+                    },
+                    {
+                        x: 97.95288777502904,
+                        y: 92.25837528152022
+                    },
+                    {
+                        x: 78.38902233402798,
+                        y: 41.21856313538661
+                    },
+                    {
+                        x: 20.101798309113896,
+                        y: 43.134853287826935
+                    },
+                    {
+                        x: 14.60893777929131,
+                        y: 98.50700905347401
+                    },
+                    {
+                        x: 62.9356488813384,
+                        y: 20.137702054758066
+                    },
+                    {
+                        x: 54.108476230307566,
+                        y: 17.501745697715787
+                    },
+                    {
+                        x: 53.014246487778905,
+                        y: 12.804392371776663
+                    },
+                    {
+                        x: 3.621879712408993,
+                        y: 57.89254257819323
+                    },
+                    {
+                        x: 46.28389043719279,
+                        y: 79.33048953251254
+                    },
+                    {
+                        x: 11.360025469322244,
+                        y: 61.5598817185286
+                    },
+                    {
+                        x: 38.38392140740776,
+                        y: 77.60216020222602
+                    },
+                    {
+                        x: 58.61465901222091,
+                        y: 35.886102407466346
+                    },
+                    {
+                        x: 30.843909247899393,
+                        y: 97.26920108272073
+                    },
+                    {
+                        x: 96.07911807693486,
+                        y: 6.0887005038042785
+                    },
+                    {
+                        x: 23.253436124353865,
+                        y: 83.04070095508887
+                    },
+                    {
+                        x: 91.09334796438449,
+                        y: 7.553429975576176
+                    },
+                    {
+                        x: 45.92816031257709,
+                        y: 20.49514612758532
+                    },
+                    {
+                        x: 85.59010876101945,
+                        y: 6.900782191985777
+                    },
+                    {
+                        x: 93.93044667196413,
+                        y: 99.89078593088495
+                    },
+                    {
+                        x: 66.9948483026248,
+                        y: 32.70450746303655
+                    },
+                    {
+                        x: 32.78038180383955,
+                        y: 65.33566445296444
+                    },
+                    {
+                        x: 4.645106574880398,
+                        y: 96.06883399687267
+                    },
+                    {
+                        x: 54.584003506307496,
+                        y: 14.42056426935514
+                    },
+                    {
+                        x: 74.99941957302549,
+                        y: 11.64774255650547
+                    },
+                    {
+                        x: 56.37084365389917,
+                        y: 20.558657425814907
+                    },
+                    {
+                        x: 56.25565268991688,
+                        y: 83.82570157525903
+                    },
+                    {
+                        x: 10.699037156289437,
+                        y: 33.038050250321405
+                    },
+                    {
+                        x: 19.583554846113692,
+                        y: 28.304965294925523
+                    },
+                    {
+                        x: 17.23314348860656,
+                        y: 55.423969220712756
+                    },
+                    {
+                        x: 90.70706544341579,
+                        y: 12.329102625008993
+                    },
+                    {
+                        x: 29.46088777749265,
+                        y: 98.26370927689815
+                    },
+                    {
+                        x: 37.53118232344266,
+                        y: 86.67666824898292
+                    },
+                    {
+                        x: 10.76125734312614,
+                        y: 93.38427977502637
+                    },
+                    {
+                        x: 92.4094918406201,
+                        y: 95.26283628247822
+                    },
+                    {
+                        x: 93.02939289168732,
+                        y: 45.13473684638327
+                    }
+                ]
+            }]
+        }, {
+            chart: {
+                width: 300,
+                height: 200
+            },
+            xAxis: {
+                title: "x"
+            },
+            yAxis: {
+                title: "y"
+            }
+        });
+    </script>
+    <!-- ZINGCHARTS -->
+    <script>
+        zingchart.render({
+            id: "chart20",
+            data: {
+                type: "line",
+                legend: {
+
+                },
+                series: [{
+                    values: [10, 12, 18, 20]
+                }]
+            },
+            width: 300,
+            height: 200
+        });
+        zingchart.render({
+            id: "chart21",
+            data: {
+                type: "pie",
+                legend: {
+
+                },
+                series: [
+                    {
+                        values: [10],
+                        text: "1"
+                    },
+                    {
+                        values: [12],
+                        text: "2"
+                    },
+                    {
+                        values: [18],
+                        text: "3"
+                    },
+                    {
+                        values: [20],
+                        text: "4"
+                    }
+                ],
+            },
+            width: 300,
+            height: 200
+        });
+        zingchart.render({
+            id: "chart22",
+            data: {
+                type: "bar",
+                legend: {
+
+                },
+                series: [{
+                    values: [10, 12, 18, 20]
+                }]
+            },
+            width: 300,
+            height: 200
+        });
+        zingchart.render({
+            id: "chart23",
+            data: {
+                type: "scatter",
+                legend: {
+
+                },
+                series: [{
+                    values: [
+                        [17.27610683006784, 44.87877613927183],
+                        [15.98499690635613, 97.98680074434105],
+                        [23.120728332919537, 26.435161289938414],
+                        [12.521850747315955, 56.04085270973738],
+                        [70.2649531402064, 4.325926039104644],
+                        [64.87038421699913, 42.72637769570646],
+                        [77.44635182390896, 91.13281463081432],
+                        [59.10248257325075, 35.895742580175096],
+                        [93.35564297006009, 62.42538168937579],
+                        [24.414462433460393, 93.99248980950613],
+                        [33.95144985409164, 67.5893503373826],
+                        [11.977407439907939, 39.18755670776506],
+                        [60.484401525834606, 26.503915927801348],
+                        [44.30654941098935, 78.41637557993826],
+                        [53.9825632044211, 4.1766673840242685],
+                        [84.59118419977456, 68.51172335033773],
+                        [45.19511553926772, 43.85495350282467],
+                        [97.95288777502904, 92.25837528152022],
+                        [78.38902233402798, 41.21856313538661],
+                        [20.101798309113896, 43.134853287826935],
+                        [14.60893777929131, 98.50700905347401],
+                        [62.9356488813384, 20.137702054758066],
+                        [54.108476230307566, 17.501745697715787],
+                        [53.014246487778905, 12.804392371776663],
+                        [3.621879712408993, 57.89254257819323],
+                        [46.28389043719279, 79.33048953251254],
+                        [11.360025469322244, 61.5598817185286],
+                        [38.38392140740776, 77.60216020222602],
+                        [58.61465901222091, 35.886102407466346],
+                        [30.843909247899393, 97.26920108272073],
+                        [96.07911807693486, 6.0887005038042785],
+                        [23.253436124353865, 83.04070095508887],
+                        [91.09334796438449, 7.553429975576176],
+                        [45.92816031257709, 20.49514612758532],
+                        [85.59010876101945, 6.900782191985777],
+                        [93.93044667196413, 99.89078593088495],
+                        [66.9948483026248, 32.70450746303655],
+                        [32.78038180383955, 65.33566445296444],
+                        [4.645106574880398, 96.06883399687267],
+                        [54.584003506307496, 14.42056426935514],
+                        [74.99941957302549, 11.64774255650547],
+                        [56.37084365389917, 20.558657425814907],
+                        [56.25565268991688, 83.82570157525903],
+                        [10.699037156289437, 33.038050250321405],
+                        [19.583554846113692, 28.304965294925523],
+                        [17.23314348860656, 55.423969220712756],
+                        [90.70706544341579, 12.329102625008993],
+                        [29.46088777749265, 98.26370927689815],
+                        [37.53118232344266, 86.67666824898292],
+                        [10.76125734312614, 93.38427977502637],
+                        [92.4094918406201, 95.26283628247822],
+                        [93.02939289168732, 45.13473684638327],
+                    ]
+                }]
+            },
+            width: 300,
+            height: 200
+        });
+        zingchart.render({
+            id: "chart24",
+            data: {
+                type: "bar",
+                plot: {
+                    aspect: "histogram"
+                },
+                plotarea: {
+                    "adjust-layout": true
+                },
+                series: [{
+                    values: [10, 12, 18, 20]
+                }],
+                "scale-x": {
+                    progression: "lin",
+                    "min-value": 0,
+                    "max-value": 3,
+                    step: 1, 
+                    decimals: 1
+                }
+            },
+            width: 300,
+            height: 200
+        });
     </script>
   </body>
 </html>

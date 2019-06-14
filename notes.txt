@@ -10,10 +10,21 @@ ChartJS
 [X] Pie
 [X] Bar
 [X] Scatter
+[X] Histogram
+
+Taucharts
+[X] Line
+[O] Pie
+[X] Bar
+[X] Scatter
+[O] Histogram
+
+Toast UI(TUI) ChartJS
+[X] Line
+[X] Pie
+[] Bar(Column)
+[] Scatter
 [] Histogram
-
-
-
 
 
 [] Line
