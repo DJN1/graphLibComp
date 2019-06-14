@@ -1,4 +1,4 @@
-# graphLibComp
+# Graph Library Comparison
 ## A simple static website that displays the same graphs with the same data from different Javascript graphing libraries.
 ### The 5 different graphing libraries are:
 + [Chartist](https://gionkunz.github.io/chartist-js/ "Chartist's website")
