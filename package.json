@@ -1,0 +1,19 @@
+{
+  "name": "graphlibcomp",
+  "version": "1.0.0",
+  "description": "Comparing different graph libraries",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Niederweis",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "chalk": "^2.4.2",
+    "chart.js": "^2.8.0",
+    "chartist": "^0.11.2",
+    "http-server": "^0.11.1",
+    "npm": "^6.9.0"
+  }
+}

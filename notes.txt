@@ -1,0 +1,23 @@
+Chartist
+[X] Line
+[X] Pie
+[X] Bar
+[X] Scatter
+[O] Histogram
+
+ChartJS
+[X] Line
+[X] Pie
+[X] Bar
+[X] Scatter
+[] Histogram
+
+
+
+
+
+[] Line
+[] Pie
+[] Bar
+[] Scatter
+[] Histogram
