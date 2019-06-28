@@ -13,3 +13,11 @@
 3. Pie Chart
 4. Scatter Plot
 5. Histogram
+
+
+## Installation
+1. Clone the repo
+2. In the folder of the repo, run `npm install`
+3. Install `http-server` globally by running `npm install http-server -g`
+4. In the root of the project run `http-server`
+5. Navigate to `http://localhost:8080/index.html`
